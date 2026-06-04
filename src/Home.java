@@ -1,3 +1,4 @@
+//Non-parameterized constructor
 public class Home {
     String owner;
     int rooms;
@@ -24,3 +25,4 @@ public class Home {
         h.showDetails();
     }
 }
+
