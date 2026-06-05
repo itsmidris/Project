@@ -10,6 +10,14 @@ public class Home {
         System.out.println("Constructor Called");
     }
 
+    /* Using This
+    Home() {
+        this.owner = "Imran";
+        this.rooms = 3;
+
+        System.out.println("Home constructor called");
+    }*/
+
     void showDetails() {
         System.out.println("Owner: "+owner);
         System.out.println("Rooms: "+ rooms);
