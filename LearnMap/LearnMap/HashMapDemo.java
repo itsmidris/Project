@@ -76,7 +76,7 @@ public class HashMapDemo {
         System.out.println(map.entrySet());
 
         // 14. Traversing Map
-        System.out.println("\nTraversing Map");
+        System.out.println("\nTraversing Map using entrySet() ");
 
         for (Map.Entry<Integer, String> entry : map.entrySet()) {
 
@@ -85,6 +85,23 @@ public class HashMapDemo {
                             " Value = " + entry.getValue()
             );
         }
+
+        System.out.println("\nTraversing Map using keySet() ");
+        for(Integer key : map.keySet()) {
+            System.out.println(key + " " + map.get(key));
+        }
+
+        System.out.println("\nTraversing Map using map.values()");
+        int i =1;
+        for (String value : map.values()){
+            System.out.println("Value " + i + ": " + value);
+            i++;
+        }
+
+        System.out.println("\nTraversing Map using Lambda Expression");
+        map.forEach((key, value)->{
+            System.out.println("Key = " + key + ", Value = " + value);
+        });
 
         // 15. isEmpty()
         System.out.println("\nIs Empty ?");
@@ -99,4 +116,4 @@ public class HashMapDemo {
         System.out.println("\nIs Empty ?");
         System.out.println(map.isEmpty());
     }
-}
+} 
