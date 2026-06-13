@@ -5,17 +5,7 @@ import java.sql.DriverManager;
 import java.sql.Statement;
 
 public class JDBCDeleteDemo {
-    /*
-    Download JAR file - Mysql driver maven dependency
 
-
-    1. Load the driver class
-    2. Get Connection from DB
-    3. Create Statement
-    4. Execute Query
-
-
-*/
     public static void main(String[] args) {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver"); //Loading Driver Class
