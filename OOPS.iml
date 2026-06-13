@@ -7,11 +7,13 @@
       <sourceFolder url="file://$MODULE_DIR$/LearnMap" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Sorting" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/BookMyTrain" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/JDBC" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/src" />
       <excludeFolder url="file://$MODULE_DIR$/src2" />
     </content>
     <content url="file://$MODULE_DIR$/out" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="mysql-connector-java-8.0.30" level="project" />
   </component>
 </module>
