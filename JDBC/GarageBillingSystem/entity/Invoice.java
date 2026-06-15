@@ -8,14 +8,14 @@ public class Invoice {
 
     private int vehicleId;
 
-    private int serviceId;
 
 
-    public Invoice(int id, int customerId, int vehicleId, int serviceId) {
+
+    public Invoice(int id, int customerId, int vehicleId) {
         this.id = id;
         this.customerId = customerId;
         this.vehicleId = vehicleId;
-        this.serviceId = serviceId;
+
     }
 
     public int getId() {
@@ -42,20 +42,13 @@ public class Invoice {
         this.vehicleId = vehicleId;
     }
 
-    public int getServiceId() {
-        return serviceId;
-    }
 
-    public void setServiceId(int serviceId) {
-        this.serviceId = serviceId;
-    }
 
     @Override
     public String toString() {
         return "Invoice [ " +
                 "id= " + id +
                 ", customerId =  " + customerId +
-                ", vehicleId = " + vehicleId +
-                ", serviceId = " + serviceId + " ]";
+                ", vehicleId = " + vehicleId + " ]";
     }
 }

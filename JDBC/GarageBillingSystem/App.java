@@ -2,6 +2,7 @@ package GarageBillingSystem;
 
 import GarageBillingSystem.Service.BillingService;
 import GarageBillingSystem.entity.Customer;
+import GarageBillingSystem.entity.Vehicle;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -22,23 +23,41 @@ public class App {
                 case 1:
                     System.out.print("Customer Name: ");
                     String name = sc.next();
+
                     System.out.print("Phone: ");
-                    String phone= sc.next();
-                    service.customerService.addCustomer(new Customer(0,name,phone));
-                    System.out.println("Enter Vehicle Number: ");
-                    String vehicleNum=sc.next();
-                    System.out.println("Enter Vehicle model: ");
-                    String model= sc.next();
-                    Customer customersBasedOnNum = service.customerService.getCustomersBasedOnNum(phone);
+                    String phone = sc.next();
 
+                    service.customerService.addCustomer(
+                            new Customer(0, name, phone));
 
+                    System.out.print("Enter Vehicle Number: ");
+                    String vehicleNum = sc.next();
+
+                    System.out.print("Enter Vehicle Model: ");
+                    String model = sc.next();
+
+                    Customer customer =
+                            service.customerService.getCustomersBasedOnNum(phone);
+
+                    service.vehicleService.addVehicle(
+                            new Vehicle(
+                                    0,
+                                    customer.getId(),
+                                    vehicleNum,
+                                    model
+                            ));
+
+                    System.out.println("Customer and Vehicle Added Successfully");
                     break;
                 case 2:
                     System.out.println("Enter Customer Id: ");
                     int cid= sc.nextInt();
                     System.out.println("Enter Vehicle Id: ");
                     int vid = sc.nextInt();
-                    System.out.println("Enter Number of Services: ");
+                    System.out.println("\nAvailable Services:");
+                    for(var s : service.serviceItemService.getAllServices()) {
+                        System.out.println(s);
+                    }
                     int n = sc.nextInt();
                     List<Integer> sids= new ArrayList<>();
 

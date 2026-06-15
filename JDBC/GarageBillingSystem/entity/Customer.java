@@ -6,6 +6,9 @@ public class Customer {
     private String name;
     private String phone;
 
+    public Customer() {
+    }
+
     public Customer(int id, String name, String phone) {
         this.id = id;
         this.name = name;
@@ -38,6 +41,9 @@ public class Customer {
 
     @Override
     public String toString() {
-        return "[ Customer ID: " + id + " Name: " + phone + "]";
+        return "[ Customer ID: " + id +
+                " Name: " + name +
+                " Phone: " + phone + "]";
+
     }
 }

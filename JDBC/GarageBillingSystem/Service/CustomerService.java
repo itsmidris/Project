@@ -40,19 +40,28 @@ public class CustomerService {
         return list;
     }
 
-    public Customer getCustomersBasedOnNum(String number) throws SQLException {
-        Customer customer = new Customer();
+    public Customer getCustomersBasedOnNum(String number)
+            throws SQLException {
+
+        Customer customer = null;
 
         Connection conn = DBConfig.getConnection();
 
-        Statement st = conn.createStatement();
+        PreparedStatement ps =
+                conn.prepareStatement(
+                        "SELECT * FROM customers WHERE phone = ?");
 
-        ResultSet rs = st.executeQuery("select * from customer where phone= "+number );
+        ps.setString(1, number);
 
-        while (rs.next()){
-            customer = new Customer(rs.getInt("id"), rs.getString("name"),rs.getString("phone"));
+        ResultSet rs = ps.executeQuery();
 
+        if(rs.next()) {
+            customer = new Customer(
+                    rs.getInt("id"),
+                    rs.getString("name"),
+                    rs.getString("phone"));
         }
+
         return customer;
     }
 }

@@ -10,19 +10,28 @@ import java.util.List;
 
 public class InvoiceService {
 
-    public void addInvoice(Invoice invoice) throws SQLException {
+    public int addInvoice(Invoice invoice)
+            throws SQLException {
+
         Connection conn = DBConfig.getConnection();
 
-        PreparedStatement ps = conn.prepareStatement("insert into invoices (customer_id,vehicle_id,service_id) values (?,?,?)");
+        PreparedStatement ps =
+                conn.prepareStatement(
+                        "INSERT INTO invoices(customer_id,vehicle_id) VALUES(?,?)",
+                        Statement.RETURN_GENERATED_KEYS);
 
         ps.setInt(1, invoice.getCustomerId());
         ps.setInt(2, invoice.getVehicleId());
-        ps.setInt(3, invoice.getServiceId());
 
         ps.executeUpdate();
-        ps.close();
 
-        conn.close();
+        ResultSet rs = ps.getGeneratedKeys();
+
+        if(rs.next()) {
+            return rs.getInt(1);
+        }
+
+        return -1;
     }
 
     public List<Invoice> getAllInvoices() throws SQLException {
@@ -35,10 +44,10 @@ public class InvoiceService {
         ResultSet rs = st.executeQuery("select * from invoices");
 
         while (rs.next()){
-            list.add(new Invoice(rs.getInt("id"),
+            list.add(new Invoice(
+                    rs.getInt("id"),
                     rs.getInt("customer_id"),
-                    rs.getInt("vehicle_id"),
-                    rs.getInt("service_id")));
+                    rs.getInt("vehicle_id")));
         }
         return list;
     }
